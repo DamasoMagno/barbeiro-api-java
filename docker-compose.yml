@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgis/postgis:17-3.4
+    container_name: barbeiro-api
+    environment:
+      POSTGRES_USER: barbeiro
+      POSTGRES_PASSWORD: barbeiro2026
+      POSTGRES_DB: barbeiro_db
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+
+
+volumes:
+  postgres_data:
+
+networks:
+  my_network:
+    driver: bridge
