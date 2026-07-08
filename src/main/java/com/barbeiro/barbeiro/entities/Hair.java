@@ -6,15 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
-@Table(name = "tb_barber")
+@Table(name = "tb_hair")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Barber {
+public class Hair {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
@@ -22,8 +23,14 @@ public class Barber {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private String phone;
+    @Column(nullable = false)
+    private BigDecimal price;
+
+    @Column
+    private String description;
+
+    @Column
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "barbershop_id", nullable = false)
